@@ -1,11 +1,13 @@
 import React, {useState,useEffect} from 'react'
 import { SearchIcon, BellIcon } from '@heroicons/react/solid'
 import Link from 'next/link'
+import useAuth from '../hooks/useAuth';
 // import zoquidLogo from "../assets/zoquidLogo.png";
 // import Image from "next/image";
 
 const Header = () => {
   const [isScrolled, setIsScrolled]=useState(false);
+  const {logout}=useAuth()
   useEffect(()=>{
     const handleScroll=()=>{
       if(window.scrollY>0){
@@ -48,6 +50,7 @@ const Header = () => {
         <BellIcon className="h-6 w-6" />
         <Link href="/account">
           <img
+          onClick={logout}
             src="https://rb.gy/g1pwyx"
             alt=""
             className="cursor-pointer rounded"
